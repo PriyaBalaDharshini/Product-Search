@@ -8,6 +8,6 @@ export const searchProducts = async (req, res) => {
         res.status(200).json({ products });
     } catch (error) {
         console.log("Error fetching products:", error.message);
-        res.status(500).json({ error: "Failed to fetch products" });
+        res.status(500).json({ error: `Failed to fetch products: ${error.message}` });
     }
 };
