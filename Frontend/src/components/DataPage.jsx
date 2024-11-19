@@ -21,7 +21,7 @@ const DataPage = () => {
             const response = await axios.get(`https://product-search-5vu4.onrender.com/search?searchQuery=${searchQuery}`);
             const result = response.data;
             console.log(result.products);
-            setProducts(result.products.map((product, index) => ({ id: index + 1, sno: index + 1, ...product })));
+            setProducts(result.products?.map((product, index) => ({ id: index + 1, sno: index + 1, ...product })));
         } catch (error) {
             console.log("Error occurred while searching:", error.message);
         } finally {
