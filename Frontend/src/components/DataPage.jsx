@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { DataGrid } from '@mui/x-data-grid';
-import './DataPage.css'; // Include this for the external CSS file
+import './dataPage.css';
 
 const DataPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
