@@ -16,22 +16,14 @@ const DataPage = () => {
 
         setLoading(true);
         try {
+            /* const response = await axios.get(`https://amazon-product-search.onrender.com/search?searchQuery=${searchQuery}`); */
             /* const response = await axios.get(`http://localhost:8000/search?searchQuery=${searchQuery}`); */
             const response = await axios.get(`https://product-search-5vu4.onrender.com/search?searchQuery=${searchQuery}`);
-            const result = response.data;
-            console.log(result.products);
-            if (Array.isArray(result.products)) {
-                setProducts(result.products.map((product, index) => ({
-                    id: index + 1,
-                    sno: index + 1,
-                    ...product
-                })));
-            } else {
-                setProducts([]);
-            }
+            const result = response.data.products;
+            console.log(result);
+            setProducts(result.map((product, index) => ({ id: index + 1, sno: index + 1, ...product })));
         } catch (error) {
             console.log("Error occurred while searching:", error.message);
-            setProducts([]);
         } finally {
             setLoading(false);
         }
