@@ -16,7 +16,7 @@ const DataPage = () => {
 
         setLoading(true);
         try {
-            /* const response = await axios.get(`https://amazon-product-search.onrender.com/search?searchQuery=${searchQuery}`); */
+
             /* const response = await axios.get(`http://localhost:8000/search?searchQuery=${searchQuery}`); */
             const response = await axios.get(`https://product-search-5vu4.onrender.com/search?searchQuery=${searchQuery}`);
             const result = response.data.products;
