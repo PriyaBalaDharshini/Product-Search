@@ -16,14 +16,22 @@ const DataPage = () => {
 
         setLoading(true);
         try {
-            /* const response = await axios.get(`https://amazon-product-search.onrender.com/search?searchQuery=${searchQuery}`); */
             /* const response = await axios.get(`http://localhost:8000/search?searchQuery=${searchQuery}`); */
             const response = await axios.get(`https://product-search-5vu4.onrender.com/search?searchQuery=${searchQuery}`);
             const result = response.data;
             console.log(result.products);
-            setProducts(result.products?.map((product, index) => ({ id: index + 1, sno: index + 1, ...product })));
+            if (Array.isArray(result.products)) {
+                setProducts(result.products.map((product, index) => ({
+                    id: index + 1,
+                    sno: index + 1,
+                    ...product
+                })));
+            } else {
+                setProducts([]);
+            }
         } catch (error) {
             console.log("Error occurred while searching:", error.message);
+            setProducts([]);
         } finally {
             setLoading(false);
         }
@@ -58,13 +66,13 @@ const DataPage = () => {
             </div>
 
             <div className="results-info">
-                {products?.length > 0
-                    ? <p>{products?.length} results found</p>
+                {products.length > 0
+                    ? <p>{products.length} results found</p>
                     : <p>No results found</p>}
             </div>
 
             <div style={{ height: 500, width: '100%' }}>
-                {products?.length > 0 && (
+                {products.length > 0 && (
                     <DataGrid
                         rows={products}
                         columns={columns}

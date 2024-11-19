@@ -35,5 +35,6 @@ export const getProducts = async (searchQuery) => {
 
     } catch (error) {
         console.log('Error getting data:', error.message);
+
     }
 };
