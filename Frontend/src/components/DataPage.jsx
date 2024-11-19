@@ -58,13 +58,13 @@ const DataPage = () => {
             </div>
 
             <div className="results-info">
-                {products.length > 0
-                    ? <p>{products.length} results found</p>
+                {products?.length > 0
+                    ? <p>{products?.length} results found</p>
                     : <p>No results found</p>}
             </div>
 
             <div style={{ height: 500, width: '100%' }}>
-                {products.length > 0 && (
+                {products?.length > 0 && (
                     <DataGrid
                         rows={products}
                         columns={columns}
